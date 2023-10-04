@@ -47,20 +47,20 @@ def numeric_list(request):
         print('Debug... id = ', id)
         print('Debug ... dict_index = ', dict_index)
         text = f'<a href=item/{id}> {items[dict_index]["name"]} , количество: {items[dict_index]["quantity"]}</a>'
-        print(text)
+        print('Debug... text = ', text)
         no_num_list.append(text)
-    print(no_num_list)
+    print('Debug... no_num_list = ', no_num_list)
 
     for x, y in enumerate(no_num_list, start=1):
-        print(f'{x}:{y}')
+        print('Debug... x:y = ', f'{x}:{y}')
         a = f'{x}:{y}'
         num_list.append(a)
-        print(num_list)
-    xz = num_list[0:]
-    print('Debug... xz = ', xz)
-    xz1 = "<br />".join(xz)
-    print('Debug... xz1 = ', xz1)
+        print('Debug... num_list = ', num_list)
+    temp_list = num_list[0:]
+    print('Debug... temp_list = ', temp_list)
+    final_string = "<br />".join(temp_list)
+    print('Debug... final_list = ', final_string)
 
-    return HttpResponse(xz1)
+    return HttpResponse(final_string)
 
 
