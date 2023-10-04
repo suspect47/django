@@ -5,5 +5,6 @@ urlpatterns = [
     path("", views.home),
     path("about", views.about),
     path("item/<int:number>", views.item),
-    path("items", views.numeric_list)
+    path("items", views.numeric_list),
+    path("index.html", views.index)
 ]

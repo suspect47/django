@@ -52,4 +52,8 @@ def numeric_list(request):
 
     return HttpResponse(final_string)
 
+# Используем шаблон html-страницы
+def index(request):
+    return render(request, 'index.html')
+
 
