@@ -25,13 +25,10 @@ def about(request):
     text = f'<h1>Имя: {name} <br /> Фамилия: {surname} <br /> Отчество: {fathername} <br /> Тел: {phone} <br /> email: {email}'
     return HttpResponse(text)
 def item(request, number):
-    print('Debug... number = ', number)
     for i in items:
         needed_item = i.get("id")
         if needed_item == number:
-            print(f'Debug... number is in {i} dictionary')
             dict_index = (items.index(i))
-            print('Debug... dict_index = ', dict_index)
             text = f'Товар: {items[dict_index]["name"]} <br /> Количество: {items[dict_index]["quantity"]} <br /> <a href=/items> Назад к списку товаров </a>'
             return HttpResponse(text)
 
@@ -44,22 +41,14 @@ def numeric_list(request):
     for i in items:
         dict_index = (items.index(i))
         id = items[dict_index]["id"]
-        print('Debug... id = ', id)
-        print('Debug ... dict_index = ', dict_index)
         text = f'<a href=item/{id}> {items[dict_index]["name"]} , количество: {items[dict_index]["quantity"]}</a>'
-        print('Debug... text = ', text)
         no_num_list.append(text)
-    print('Debug... no_num_list = ', no_num_list)
 
     for x, y in enumerate(no_num_list, start=1):
-        print('Debug... x:y = ', f'{x}:{y}')
         a = f'{x}:{y}'
         num_list.append(a)
-        print('Debug... num_list = ', num_list)
     temp_list = num_list[0:]
-    print('Debug... temp_list = ', temp_list)
     final_string = "<br />".join(temp_list)
-    print('Debug... final_list = ', final_string)
 
     return HttpResponse(final_string)
 
