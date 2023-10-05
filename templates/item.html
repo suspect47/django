@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Django на METANIT.COM</title>
+</head>
+<body>
+    <p>id товара: {{ id }}</p>
+    <p>Наименование товара: {{ name }} </p>
+    <p>
+        {% if quantity == 0 %}
+            Товар отсутствует
+        {% else %}
+        Количество: {{ quantity }}</p>
+        {% endif %}
+
+    <p><a href=/items> Назад к списку товаров </a></p>
+</body>
+</html>

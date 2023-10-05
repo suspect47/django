@@ -21,38 +21,23 @@ def home(request):
     """
     return HttpResponse(text)
 
-def about(request):
-    text = f'<h1>Имя: {name} <br /> Фамилия: {surname} <br /> Отчество: {fathername} <br /> Тел: {phone} <br /> email: {email}'
-    return HttpResponse(text)
-def item(request, number):
+def item1(request, number):
     for i in items:
         needed_item = i.get("id")
         if needed_item == number:
             dict_index = (items.index(i))
-            text = f'Товар: {items[dict_index]["name"]} <br /> Количество: {items[dict_index]["quantity"]} <br /> <a href=/items> Назад к списку товаров </a>'
-            return HttpResponse(text)
+            data = items[dict_index]
+            return render(request, "item.html", context=data)
 
     text = f'Товар с id={number} не найден'
     return HttpResponse(text)
 
 def numeric_list(request):
-    no_num_list = []
-    num_list = []
-    for i in items:
-        dict_index = (items.index(i))
-        id = items[dict_index]["id"]
-        text = f'<a href=item/{id}> {items[dict_index]["name"]} , количество: {items[dict_index]["quantity"]}</a>'
-        no_num_list.append(text)
+    item_list = items
+    print('data = ', item_list)
+    data = {"data": item_list}
+    return render(request, "items.html", {'data': data})
 
-    for x, y in enumerate(no_num_list, start=1):
-        a = f'{x}:{y}'
-        num_list.append(a)
-    temp_list = num_list[0:]
-    final_string = "<br />".join(temp_list)
-
-    return HttpResponse(final_string)
-
-# Используем шаблон html-страницы
 def index(request):
     return render(request, 'index.html')
 
